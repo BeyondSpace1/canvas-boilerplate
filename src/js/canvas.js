@@ -1,10 +1,10 @@
 import utils from './utils'
 
-const canvas = document.querySelector('canvas')
-const c = canvas.getContext('2d')
+const c = document.querySelector('canvas')
+const can = canvas.getContext('2d')
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+c.width = innerWidth
+c.height = innerHeight
 
 const mouse = {
   x: innerWidth / 2,
@@ -20,8 +20,8 @@ addEventListener('mousemove', (event) => {
 })
 
 addEventListener('resize', () => {
-  canvas.width = innerWidth
-  canvas.height = innerHeight
+  c.width = innerWidth
+  c.height = innerHeight
 
   init()
 })
@@ -36,11 +36,11 @@ class Object {
   }
 
   draw() {
-    c.beginPath()
-    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
-    c.fillStyle = this.color
-    c.fill()
-    c.closePath()
+    can.beginPath()
+    can.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+    can.fillStyle = this.color
+    can.fill()
+    can.closePath()
   }
 
   update() {
@@ -61,9 +61,9 @@ function init() {
 // Animation Loop
 function animate() {
   requestAnimationFrame(animate)
-  c.clearRect(0, 0, canvas.width, canvas.height)
+  can.clearRect(0, 0, canvas.width, canvas.height)
 
-  c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y)
+  can.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y)
   // objects.forEach(object => {
   //  object.update()
   // })
